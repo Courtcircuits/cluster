@@ -1,0 +1,31 @@
+harbor:
+  externalURL: https://harbor.courtcircuits.xyz
+  exposureType: "ingress"
+  ingress:
+    core:
+      hostname: "harbor.courtcircuits.xyz"
+  registry:
+    relativeurls: true
+
+argocd:
+  namespaceOverride: argocd
+  controller:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    ingress:
+        enabled: true
+        ingressClassName: traefik
+        hosts:
+        - host: argocd.courtcircuits.xyz
+  config: 
+    cm:
+      url: https://argocd.courtcircuits.xyz
+  repoServer:
+    resources:
+      requests:controller:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true

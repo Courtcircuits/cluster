@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ratathune-backend
+  namespace: argocd
+spec:
+  project: ratathune
+  source:
+    repoURL: 'https://github.com/Courtcircuits/ratathune-server'
+    path: deployment/back
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: ratathune
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

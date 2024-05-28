@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ratathune-postgresql
+  namespace: argocd
+spec:
+  project: ratathune
+  source:
+    repoURL: 'https://github.com/Courtcircuits/cluster'
+    path: projects/ratathune/postgresql
+    helm:
+      version: 15.4.2
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: ratathune
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ratathune-minio
+  namespace: argocd
+spec:
+  project: ratathune
+  source:
+    repoURL: 'https://github.com/Courtcircuits/cluster'
+    path: projects/ratathune/minio
+    helm:
+      version: 14.6.0
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: ratathune
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

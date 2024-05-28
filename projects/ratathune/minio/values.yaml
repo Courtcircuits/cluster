@@ -1,0 +1,6 @@
+minio:
+  namespaceOverride: "ratathune"
+  defaultBuckets: "ratathune"
+  auth:
+    rootUser: "admin"
+    rootPassword: "DBjIt0FErv" ## not exposed

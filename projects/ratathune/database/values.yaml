@@ -1,0 +1,8 @@
+postgresql:
+  global:
+    postgresql:
+      auth:
+        postgresPassword: "postgres"
+        database: "ratathune"
+      service:
+        port: "5432"
