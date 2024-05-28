@@ -12,7 +12,10 @@ curl -sfL https://get.k3s.io | sh -
 ```
 3. Install helm services : 
 ```bash
-helm install services --values services/values.yaml ./services --namespace services
+cd services
+helm dependency build
+helm install . --values services/values.yaml . --namespace services
+cd ..
 ```
 4. Install argocd appofapps : 
 ```bash

@@ -1,0 +1,133 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: ratathune
+  namespace: services
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: Project containing all applications used by courtcircuits' cluster
+  destinations:
+  - namespace: '*'
+    server: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  orphanedResources:
+    warn: true
+  sourceRepos:
+    - '*'
+---
+###########
+# BACKEND #
+###########
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ratathune-backend
+  namespace: services
+spec:
+  project: ratathune
+  source:
+    repoURL: 'https://github.com/Courtcircuits/ratathune-server'
+    path: deployment/back
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: ratathune
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ratathune-frontend
+  namespace: services
+spec:
+  project: ratathune
+  source:
+    repoURL: 'https://github.com/Courtcircuits/Rathatune-client'
+    path: deployment/front
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: ratathune
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ratathune-backend
+  namespace: services
+spec:
+  project: ratathune
+  source:
+    repoURL: 'https://github.com/Courtcircuits/cluster'
+    path: projects/ratathune/ingress
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: ratathune
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ratathune-postgresql
+  namespace: services
+spec:
+  project: ratathune
+  source:
+    repoURL: 'https://github.com/Courtcircuits/cluster'
+    path: projects/ratathune/postgresql
+    helm:
+      version: 15.4.2
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: ratathune
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ratathune-minio
+  namespace: services
+spec:
+  project: ratathune
+  source:
+    repoURL: 'https://github.com/Courtcircuits/cluster'
+    path: projects/ratathune/minio
+    helm:
+      version: 14.6.0
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: ratathune
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

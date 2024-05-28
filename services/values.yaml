@@ -8,20 +8,20 @@ harbor:
     relativeurls: true
 
 argocd:
-  namespaceOverride: argocd
+  global:
+    domain: argo.courtcircuits.xyz
+  server:
+    ingress:
+      enabled: true
+      ingressClassName: "traefik"
+      tls: true
+      hosts:
+        - argo.courtcircuits.xyz
   controller:
     metrics:
       enabled: true
       serviceMonitor:
         enabled: true
-    ingress:
-        enabled: true
-        ingressClassName: traefik
-        hosts:
-        - host: argocd.courtcircuits.xyz
-  config: 
-    cm:
-      url: https://argocd.courtcircuits.xyz
   repoServer:
     resources:
       requests:controller:

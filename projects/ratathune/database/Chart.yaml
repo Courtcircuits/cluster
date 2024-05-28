@@ -18,7 +18,7 @@ type: application
 version: 0.1.0
 
 dependencies:
-  - name: bitnami/postgresql
+  - name: postgresql
     alias: postgresql
     version: 15.4.2
     repository: https://charts.bitnami.com/bitnami
