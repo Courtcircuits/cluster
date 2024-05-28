@@ -44,6 +44,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: minio
+            name: ratathune-minio
             port:
               number: 9000
