@@ -69,7 +69,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ratathune-backend
+  name: ratathune-ingress
   namespace: services
 spec:
   project: ratathune
@@ -97,9 +97,8 @@ spec:
   project: ratathune
   source:
     repoURL: 'https://github.com/Courtcircuits/cluster'
-    path: projects/ratathune/postgresql
+    path: projects/ratathune/database
     helm:
-      version: 15.4.2
       valueFiles:
         - values.yaml
   destination:
@@ -121,7 +120,6 @@ spec:
     repoURL: 'https://github.com/Courtcircuits/cluster'
     path: projects/ratathune/minio
     helm:
-      version: 14.6.0
       valueFiles:
         - values.yaml
   destination:
