@@ -1,0 +1,27 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  annotations:
+    # add an annotation indicating the issuer to use.
+    cert-manager.io/cluster-issuer: {{ .Values.clusterIssuer | quote}}
+  name: {{ .Values.argocdServiceName }}
+  namespace: services
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`argo.{{ .Values.rootDomain }}`)
+      priority: 10
+      services:
+        - name: {{ .Values.argocdServiceName }}
+          port: 80
+    - kind: Rule
+      match: Host(`argo.{{ .Values.rootDomain }}`) && Headers(`Content-Type`, `application/grpc`)
+      priority: 11
+      services:
+        - name: {{ .Values.argocdServiceName }}
+          port: 80
+          scheme: h2c
+  tls:
+    secretName: argocd-tls

@@ -1,3 +1,7 @@
+rootDomain: courtcircuits.xyz
+clusterIssuer: ca-issuer
+argocdServiceName: services-argocd-server
+
 harbor:
   externalURL: https://harbor.courtcircuits.xyz
   exposureType: "ingress"
@@ -8,8 +12,6 @@ harbor:
     relativeurls: true
 
 argocd:
-  global:
-    domain: argo.courtcircuits.xyz
   controller:
     metrics:
       enabled: true
