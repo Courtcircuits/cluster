@@ -40,3 +40,25 @@ spec:
     automated:
       prune: true
       selfHeal: true
+---
+############
+# database #
+############
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hackthecrous-services
+  namespace: services
+spec:
+  project: hackthecrous
+  source:
+    repoURL: 'https://github.com/Courtcircuits/cluster'
+    path: projects/hackthecrous/database
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: hackthecrous
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
