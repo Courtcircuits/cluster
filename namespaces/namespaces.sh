@@ -4,6 +4,7 @@
 
 kubectl create namespace argocd
 kubectl create namespace harbor
+kubectl create namespace cert-manager
 kubectl create namespace services
 
 

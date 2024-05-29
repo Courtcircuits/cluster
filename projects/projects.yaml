@@ -14,7 +14,36 @@ spec:
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: argocd
+    namespace: services
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+################
+# Cert-manager #
+################
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: services
+spec:
+  project: services
+  source:
+    repoURL: 'https://github.com/Courtcircuits/cluster'
+    path: projects/cert-manager
+    targetRevision: HEAD
+    helm:
+      charts:
+        - name: cert-manager
+          version: 1.14.5
+          repository: https://charts.jetstack.io
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: services
   syncPolicy:
     automated:
       prune: true
