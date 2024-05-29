@@ -35,10 +35,6 @@ spec:
     path: projects/cert-manager
     targetRevision: HEAD
     helm:
-      charts:
-        - name: cert-manager
-          version: 1.14.5
-          repository: https://charts.jetstack.io
       valueFiles:
         - values.yaml
   destination:
