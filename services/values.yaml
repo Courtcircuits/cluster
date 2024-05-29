@@ -10,13 +10,6 @@ harbor:
 argocd:
   global:
     domain: argo.courtcircuits.xyz
-  server:
-    ingress:
-      enabled: true
-      ingressClassName: "traefik"
-      tls: true
-      hosts:
-        - argo.courtcircuits.xyz
   controller:
     metrics:
       enabled: true
