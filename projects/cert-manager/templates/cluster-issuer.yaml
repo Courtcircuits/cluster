@@ -4,11 +4,4 @@ metadata:
   name: ca-issuer
 spec:
   ca:
-    secretName: ca-key-pair
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: ca-key-pair
-  namespace: cert-manager
-type: Opaque
+    secretName: cert-manager-webhook-ca
