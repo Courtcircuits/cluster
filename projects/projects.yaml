@@ -29,7 +29,7 @@ metadata:
   name: cert-manager
   namespace: services
 spec:
-  project: services
+  project: infrastructure
   source:
     repoURL: 'https://github.com/Courtcircuits/cluster'
     path: projects/cert-manager
