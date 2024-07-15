@@ -1,0 +1,29 @@
+kind:{{- if .Values.ingress.enabled -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: spotify-dataviz-ingress
+  namespace: {{ .Release.Namespace}}
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    traefik.ingress.kubernetes.io/redirection-entry-point: https
+    traefik.ingress.kubernetes.io/redirect-permanent: "true"
+  labels:
+    name: ratathune-ingress
+spec:
+  ingressClassName: traefik
+  tls:
+  - hosts:
+    - {{ .Values.spotify-dataviz.host }}
+    secretName: "spotify-dataviz-tls-ca-part-en-prod"
+  rules:
+  - host: {{ .Values.spotify-dataviz.host }}
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: spotify-dataviz
+            port: 
+              number: {{ .Values.service.externalPort }}

@@ -1,0 +1,9 @@
+image: "milou666/r-project:latest"
+replicaCount: 2
+service:
+  externalPort: 80
+  internalPort: 4000
+spotify-dataviz:
+  host: "dataviz.courtcircuits.xyz"
+  ingress:
+    enabled: true
