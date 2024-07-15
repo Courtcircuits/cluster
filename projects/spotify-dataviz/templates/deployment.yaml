@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: {{ $fullname := printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" }}
-  name: {{ $fullname }}
+  name: {{ .Release.Name }}-deployment
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
 spec:
