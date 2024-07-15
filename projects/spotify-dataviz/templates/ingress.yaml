@@ -14,10 +14,10 @@ spec:
   ingressClassName: traefik
   tls:
   - hosts:
-    - {{ .Values.spotify-dataviz.host }}
+    - {{ .Values.spotifydataviz.host }}
     secretName: "spotify-dataviz-tls-ca-part-en-prod"
   rules:
-  - host: {{ .Values.spotify-dataviz.host }}
+  - host: {{ .Values.spotifydataviz.host }}
     http:
       paths:
       - pathType: Prefix

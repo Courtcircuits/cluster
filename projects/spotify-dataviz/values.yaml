@@ -3,7 +3,7 @@ replicaCount: 2
 service:
   externalPort: 80
   internalPort: 4000
-spotify-dataviz:
+spotifydataviz:
   host: "dataviz.courtcircuits.xyz"
   ingress:
     enabled: true
