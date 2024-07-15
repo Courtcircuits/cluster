@@ -1,4 +1,4 @@
-kind: apiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata: {{ $fullname := printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" }}
   name: {{ $fullname }}
@@ -28,5 +28,3 @@ spec:
           httpGet:
             path: /
             port: {{ .Values.service.internalPort | int }}
-        resources:
-{{ toYaml .Values.resources | indent 10 }}
