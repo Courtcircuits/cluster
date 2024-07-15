@@ -45,9 +45,9 @@ spec:
       prune: true
       selfHeal: true
 ---
-#############
-# Ratathune #
-#############
+##################
+# Hack the Crous #
+##################
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -62,6 +62,52 @@ spec:
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: services
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: dataviz
+  namespace: services
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: Project for the dataviz application
+  destinations:
+  - namespace: '*'
+    server: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  orphanedResources:
+    warn: true
+  sourceRepos:
+    - '*'
+---
+###########
+# Dataviz #
+###########
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dataviz
+  namespace: services
+spec:
+  project: dataviz
+  source:
+    repoURL: 'https://github.com/Courtcircuits/cluster'
+    path: projects/spotify-dataviz
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: dataviz
   syncPolicy:
     automated:
       prune: true
