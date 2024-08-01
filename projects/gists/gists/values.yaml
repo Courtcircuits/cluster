@@ -1,0 +1,12 @@
+image: "milou666/gists-api"
+tag: "latest"
+replicaCount: 1
+service:
+  externalPort: 80
+  internalPort: 4000
+gists:
+  host: "api-gists.courtcircuits.xyz"
+  ingress:
+    enabled: true
+postgres:
+  password: "gist-database"

@@ -1,0 +1,9 @@
+postgresql:
+  global:
+    postgresql:
+      auth:
+        postgresPassword: "postgres"
+        database: "gists"
+      service:
+        port: "5432"
+
