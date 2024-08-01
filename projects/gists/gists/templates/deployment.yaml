@@ -21,21 +21,21 @@ spec:
         ports:
         - containerPort: {{ .Values.service.internalPort | int }}
         env:
-          - name: PORT
-            value: {{ .Values.service.internalPort }}
-          - name: PG_USER
-            value: "postgres"
-          - name: PG_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: {{ .Values.postgres.secret }}
-                key: postgres-password
-          - name: PG_PORT
-            value: "5432"
-          - name: PG_HOST
-            value: "0.0.0.0"
-          - name: PG_DATABASE
-            value: "gists"
+        - name: PORT
+          value: {{ .Values.service.internalPort | quote }}
+        - name: PG_USER
+          value: "postgres"
+        - name: PG_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.postgres.secret }}
+              key: postgres-password
+        - name: PG_PORT
+          value: "5432"
+        - name: PG_HOST
+          value: "0.0.0.0"
+        - name: PG_DATABASE
+          value: "gists"
         livenessProbe:
           httpGet:
             path: /
