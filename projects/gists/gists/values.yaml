@@ -9,4 +9,4 @@ gists:
   ingress:
     enabled: true
 postgres:
-  secret: ""database-gists-postgresql"
+  secret: "database-gists-postgresql"
