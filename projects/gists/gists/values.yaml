@@ -13,4 +13,4 @@ postgres:
 
 jobs:
   - name: "migrate"
-    command: "./main migrate && exit"
+    command: ["./main", "migrate"]
