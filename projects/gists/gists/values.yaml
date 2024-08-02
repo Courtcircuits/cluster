@@ -10,3 +10,7 @@ gists:
     enabled: true
 postgres:
   secret: "database-gists-postgresql"
+
+jobs:
+  - name: "migrate"
+    command: "./main migrate && exit"

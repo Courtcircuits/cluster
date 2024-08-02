@@ -1,0 +1,33 @@
+{{- $values := .Values -}}
+{{- $release := .Release -}}
+{{- range $.Values.jobs}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ $release.Name }}-{{ .name}}
+  namespace: {{ $release.Namespace }}
+spec:
+  template:
+    spec:
+      containers:
+      - name: {{ $release.Name }}-{{ .name}}
+        image: "milou666/{{ .Values.image }}:{{ .Values.tag }}"
+        command: [{{ .command | quote }}]
+        env:
+        - name: PG_USER
+          value: "postgres"
+        - name: PG_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.postgres.secret }}
+              key: postgres-password
+        - name: PG_PORT
+          value: "5432"
+        - name: PG_HOST
+          value: "database-gists-postgresql.gists.svc.cluster.local"
+        - name: PG_DATABASE
+          value: "gists"
+      restartPolicy: Never
+  backoffLimit: 4
+---
+{{- end}}
