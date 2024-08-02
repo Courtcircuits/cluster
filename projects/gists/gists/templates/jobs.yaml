@@ -12,7 +12,7 @@ spec:
       containers:
       - name: {{ $release.Name }}-{{ .name}}
         image: "{{ $values.image }}:{{ $values.tag }}"
-        command: {{ .command }}
+        command: ["./main", {{ .command | quote}}]
         env:
         - name: PG_USER
           value: "postgres"
