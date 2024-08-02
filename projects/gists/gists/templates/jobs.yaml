@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: {{ $release.Name }}-{{ .name}}
-        image: "milou666/{{ .Values.image }}:{{ .Values.tag }}"
+        image: "milou666/{{ $values.image }}:{{ $values.tag }}"
         command: [{{ .command | quote }}]
         env:
         - name: PG_USER
@@ -19,7 +19,7 @@ spec:
         - name: PG_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.postgres.secret }}
+              name: {{ $values.postgres.secret }}
               key: postgres-password
         - name: PG_PORT
           value: "5432"
