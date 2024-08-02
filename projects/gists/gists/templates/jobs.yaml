@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: {{ $release.Name }}-{{ .name}}
-        image: "milou666/{{ $values.image }}:{{ $values.tag }}"
+        image: "{{ $values.image }}:{{ $values.tag }}"
         command: [{{ .command | quote }}]
         env:
         - name: PG_USER
