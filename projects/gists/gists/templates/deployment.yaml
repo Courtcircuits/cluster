@@ -36,6 +36,14 @@ spec:
           value: "database-gists-postgresql.gists.svc.cluster.local"
         - name: PG_DATABASE
           value: "gists"
+        {{- $values := .Values -}}
+        {{- range $.Values.gists.secrets}}
+        - name: {{ .name }}
+          valueFrom:
+            secretKeyRef:
+              name: "gists-secrets-deployment"
+              key: {{ .name }}
+        {{- end}}
         livenessProbe:
           httpGet:
             path: /

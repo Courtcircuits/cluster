@@ -8,6 +8,16 @@ gists:
   host: "api-gists.courtcircuits.xyz"
   ingress:
     enabled: true
+  secrets:
+    - name: "GITHUB_KEY"
+    - name: "GITHUB_SECRET"
+    - name: "GOOGLE_KEY"
+    - name: "GOOGLE_SECRET"
+    - name: "APP_KEY"
+    - name: "SMTP_HOST"
+    - name: "MAIL_SMTP"
+    - name: "MAIL_PASSWORD"
+    - name: "SMTP_PORT"
 postgres:
   secret: "database-gists-postgresql"
 
