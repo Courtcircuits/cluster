@@ -18,6 +18,7 @@ gists:
     - name: "MAIL_SMTP"
     - name: "MAIL_PASSWORD"
     - name: "SMTP_PORT"
+    - name: "PUBLIC_URL"
 postgres:
   secret: "database-gists-postgresql"
 
