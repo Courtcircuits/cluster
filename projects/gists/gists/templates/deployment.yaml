@@ -36,6 +36,8 @@ spec:
           value: "database-gists-postgresql.gists.svc.cluster.local"
         - name: PG_DATABASE
           value: "gists"
+        - name: FRONTEND_URL
+          value: "https://gists.courtcircuits.xyz"
         {{- $values := .Values -}}
         {{- range $.Values.gists.secrets}}
         - name: {{ .name }}
