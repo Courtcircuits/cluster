@@ -38,6 +38,8 @@ spec:
           value: "gists"
         - name: FRONTEND_URL
           value: "https://gists.app"
+        - name: ENV
+          value: "production"
         {{- $values := .Values -}}
         {{- range $.Values.gists.secrets}}
         - name: {{ .name }}
