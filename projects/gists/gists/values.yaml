@@ -5,7 +5,7 @@ service:
   externalPort: 80
   internalPort: 4000
 gists:
-  host: "api-gists.courtcircuits.xyz"
+  host: "api.gists.app"
   ingress:
     enabled: true
   secrets:

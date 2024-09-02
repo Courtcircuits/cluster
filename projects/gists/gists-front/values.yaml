@@ -5,6 +5,6 @@ service:
   externalPort: 80
   internalPort: 3000
 gists:
-  host: "gists.courtcircuits.xyz"
+  host: "gists.app"
   ingress:
     enabled: true
