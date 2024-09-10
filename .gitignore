@@ -1,2 +1,2 @@
-services/values.yaml  #contains secrets that need to be encrypted
+services/values.yaml
 
