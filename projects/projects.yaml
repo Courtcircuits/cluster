@@ -45,31 +45,9 @@ spec:
       prune: true
       selfHeal: true
 ---
-apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
-  name: dataviz
-  namespace: services
-spec:
-  clusterResourceWhitelist:
-    - group: "*"
-      kind: "*"
-  description: Project for the dataviz application
-  destinations:
-    - namespace: "*"
-      server: "*"
-  namespaceResourceWhitelist:
-    - group: "*"
-      kind: "*"
-  orphanedResources:
-    warn: true
-  sourceRepos:
-    - "*"
----
 #########
 # Gists #
 #########
-
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
