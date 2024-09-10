@@ -22,11 +22,6 @@ dependencies:
     alias: argocd
     version: 7.0.0
     repository: https://argoproj.github.io/argo-helm
-  - name: harbor
-    alias: harbor
-    version: 21.2.1
-    repository: https://charts.bitnami.com/bitnami
-
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
