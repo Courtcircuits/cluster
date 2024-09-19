@@ -11,4 +11,4 @@ controller:
 database:
   url: "postgres://postgres:postgres@database-sealci-postgresql:5432/sealci?sslmode=disable"
 scheduler:
-  grpcHost: "81.64.166.11:5004"
+  grpcHost: "http://81.64.166.11:5004"
