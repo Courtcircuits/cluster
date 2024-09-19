@@ -2,8 +2,8 @@ dependencies:
 - name: argo-cd
   repository: https://argoproj.github.io/argo-helm
   version: 7.0.0
-- name: harbor
-  repository: https://charts.bitnami.com/bitnami
-  version: 21.2.1
-digest: sha256:3fda30f85f0c8a3e5638bac4759e732131f2ec31d9ce25e4f5fac84b33b45125
-generated: "2024-05-28T16:42:31.260217137+02:00"
+- name: external-dns
+  repository: https://kubernetes-sigs.github.io/external-dns
+  version: 1.15.0
+digest: sha256:04f3788e01092d2346bef4d56ae4bb56c99a44fe57026a6cb0460bfdc6f1335e
+generated: "2024-09-19T23:28:08.14779151+02:00"
