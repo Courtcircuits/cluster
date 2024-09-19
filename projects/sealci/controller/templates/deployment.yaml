@@ -29,9 +29,9 @@ spec:
           value: {{ .Values.scheduler.grpcHost | quote }}
         livenessProbe:
           httpGet:
-            path: /
+            path: /docs
             port: {{ .Values.service.internalPort | int }}
         readinessProbe:
           httpGet:
-            path: /
+            path: /docs
             port: {{ .Values.service.internalPort | int }}
