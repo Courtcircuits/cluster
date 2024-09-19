@@ -25,8 +25,10 @@ Then get the kubeconfig file and set it as KUBECONFIG env variable.
 ```bash
 cd services
 # you might need to install argocd repo and bitnami repo
+helm repo add sealed-secrets https://bitnami-labs.github.io/sealed-secrets
 helm dependency build
 helm install services --values ./values.yaml . --namespace services
+helm install sealed-secrets -n kube-system --set-string fullnameOverride=sealed-secrets-controller sealed-secrets/sealed-secrets
 cd ..
 ```
 
@@ -36,4 +38,3 @@ cd ..
 kubectl apply -f ./app-of-apps/project.yaml
 kubectl apply -f ./app-of-apps/projects.yaml
 ```
-

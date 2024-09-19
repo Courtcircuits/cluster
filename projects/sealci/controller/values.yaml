@@ -9,6 +9,6 @@ controller:
   ingress:
     enabled: true
 database:
-  url: "postgres://sealci:sealci@sealci-db:5432/sealci?sslmode=disable"
+  url: "postgres://postgres:postgres@database-sealci-postgresql:5432/sealci?sslmode=disable"
 scheduler:
   grpcHost: "81.64.166.11:5004"
