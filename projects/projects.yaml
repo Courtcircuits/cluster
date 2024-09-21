@@ -202,4 +202,24 @@ spec:
       prune: true
       selfHeal: true
 ---
-
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: scheduler-sealci
+  namespace: services
+spec:
+  project: sealci
+  source:
+    repoURL: "https://github.com/Courtcircuits/cluster"
+    path: projects/sealci/scheduler
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: sealci
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
