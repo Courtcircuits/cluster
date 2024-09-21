@@ -2,8 +2,8 @@ image: "milou666/sealci-scheduler"
 tag: "latest"
 replicaCount: 1
 service:
-  externalPort: 50051
-  internalPort: 50051
+  externalPort: 5005
+  internalPort: 5005
 scheduler:
   host: "scheduler.courtcircuits.xyz"
   ingress:
