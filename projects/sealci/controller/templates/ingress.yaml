@@ -1,28 +1,28 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: controller-sealci-ingress
-#   namespace: {{ .Release.Namespace }}
-#   annotations:
-#     cert-manager.io/cluster-issuer: letsencrypt-production
-#     traefik.ingress.kubernetes.io/redirection-entry-point: https
-#     traefik.ingress.kubernetes.io/redirect-permanent: "true"
-#   labels:
-#     name: controller-sealci-ingress
-# spec:
-#   ingressClassName: traefik
-#   tls:
-#     - hosts:
-#         - {{ .Values.controller.host }}
-#       secretName: "controller-sealci-tls-ca-part-en-prod"
-#   rules:
-#     - host: {{ .Values.controller.host }}
-#       http:
-#         paths:
-#           - pathType: Prefix
-#             path: "/"
-#             backend:
-#               service:
-#                 name: "controller-sealci"
-#                 port:
-#                   number: {{ .Values.service.externalPort }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: controller-sealci-ingress
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    traefik.ingress.kubernetes.io/redirection-entry-point: https
+    traefik.ingress.kubernetes.io/redirect-permanent: "true"
+  labels:
+    name: controller-sealci-ingress
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - {{ .Values.controller.host }}
+      secretName: "controller-sealci-tls-ca-part-en-prod"
+  rules:
+    - host: {{ .Values.controller.host }}
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: "controller-sealci"
+                port:
+                  number: {{ .Values.service.externalPort }}
