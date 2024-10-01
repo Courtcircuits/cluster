@@ -1,4 +1,4 @@
-image: "milou666/gists-app"
+image: "milou666/portfolio"
 tag: "latest"
 replicaCount: 1
 service:
