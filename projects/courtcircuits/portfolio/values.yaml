@@ -1,0 +1,10 @@
+image: "milou666/gists-app"
+tag: "latest"
+replicaCount: 1
+service:
+  externalPort: 8080
+  internalPort: 8080
+portfolio:
+  host: "courtcircuits.xyz"
+  ingress:
+    enabled: true
