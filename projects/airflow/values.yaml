@@ -6,3 +6,11 @@ airflow:
   migrateDatabaseJob:
     useHelmHooks: false
     applyCustomEnv: false
+    jobAnnotations:
+      "argocd.argoproj.io/hook": Sync
+  postgresql: # by default postgres shipped by the chart
+    enabled: false
+
+postgresql: # HA postgres
+  postgresql:
+    postgresPassword: "postgres"
