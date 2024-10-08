@@ -21,8 +21,15 @@ airflow:
 global:
   postgresql:
     database: "airflow"
+    username: "postgres"
+    password: "postgres"
     repmgrUsername: "repmgr"
     repmgrPassword: "repmgr_password"
+    postgresqlPassword: "postgres"
+    postgresqlDatabase: "airflow"
+  pgpool:
+    adminPassword: "postgres"
+    adminUsername: "admin"
 postgres-ha: # HA postgres
   postgresql:
     postgresPassword: "postgres"
