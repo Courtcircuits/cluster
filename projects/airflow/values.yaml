@@ -1,9 +1,11 @@
 executor: "KubernetesExecutor"
 createUserJob:
+  enabled: true
   useHelmHooks: false
   applyCustomEnv: false
 migrateDatabaseJob:
   enabled: true
+  useHelmHooks: false
   jobAnnotations:
     "argocd.argoproj.io/hook": Sync
 extraSecrets:
