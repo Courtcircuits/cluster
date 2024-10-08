@@ -11,6 +11,6 @@ airflow:
   postgresql: # by default postgres shipped by the chart
     enabled: false
 
-postgresql: # HA postgres
+postgres-ha: # HA postgres
   postgresql:
     postgresPassword: "postgres"

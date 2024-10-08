@@ -8,7 +8,7 @@ dependencies:
     alias: airflow
     version: 1.15.0
     repository: https://airflow.apache.org/
-  - name: bitnami/postgresql-ha
-    alias: postgres
+  - name: postgresql-ha
+    alias: postgres-ha
     version: 14.2.33
     repository: https://charts.bitnami.com/bitnami
