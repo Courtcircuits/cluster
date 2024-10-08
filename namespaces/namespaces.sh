@@ -15,10 +15,10 @@ kubectl create namespace hackthecrous
 kubectl create namespace hugo
 kubectl create namespace ratathune
 kubectl create namespace gists
+kubectl create namespace airswagg
 
 #######
 # CRD #
 #######
 
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.5/cert-manager.crds.yaml
-
