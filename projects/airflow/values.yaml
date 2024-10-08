@@ -10,7 +10,14 @@ airflow:
       "argocd.argoproj.io/hook": Sync
   postgresql: # by default postgres shipped by the chart
     enabled: false
-
+  data:
+    metadataConnection:
+      user: postgres
+      pass: postgres
+      protocol: postgresql
+      host: airflow-poc-postgres-ha-postgresql.airswagg.svc.cluster.local
+      port: 5432
+      db: "airflow"
 postgres-ha: # HA postgres
-  postgresql:
-    postgresPassword: "postgres"
+  postgresPassword: "postgres"
+  database: "airflow"
