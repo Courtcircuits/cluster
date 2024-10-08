@@ -1,21 +1,8 @@
-executor: "KubernetesExecutor"
-createUserJob:
-  enabled: true
-  useHelmHooks: false
-  applyCustomEnv: false
-migrateDatabaseJob:
-  enabled: true
-  useHelmHooks: false
-  jobAnnotations:
-    "argocd.argoproj.io/hook": Sync
-extraSecrets:
-  "{{ .Release.Name }}-example":
+airflow:
+  executor: "KubernetesExecutor"
+  createUserJob:
     useHelmHooks: false
-    data: |
-      AIRFLOW_VAR_HELLO_MESSAGE: "Hi!"
-
-extraConfigMaps:
-  "{{ .Release.Name }}-example":
-    useHelmHooks: false
-    data: |
-      AIRFLOW_VAR_HELLO_MESSAGE: "Hi!"
+    applyCustomEnv: false
+    migrateDatabaseJob:
+      useHelmHooks: false
+      applyCustomEnv: false
