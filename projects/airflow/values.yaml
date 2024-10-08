@@ -18,8 +18,11 @@ airflow:
       host: airflow-poc-postgres-ha-postgresql.airswagg.svc.cluster.local
       port: 5432
       db: "airflow"
+global:
+  postgresql:
+    database: "airflow"
+    repmgrUsername: "repmgr"
+    repmgrPassword: "repmgr_password"
 postgres-ha: # HA postgres
-  postgresPassword: "postgres"
-  database: "airflow"
-  repmgrUsername: "repmgr"
-  repmgrPassword: "repmgr_password"
+  postgresql:
+    postgresPassword: "postgres"
