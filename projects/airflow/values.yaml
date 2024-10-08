@@ -26,3 +26,5 @@ global:
 postgres-ha: # HA postgres
   postgresql:
     postgresPassword: "postgres"
+  pgpool:
+    adminPassword: "postgres"
