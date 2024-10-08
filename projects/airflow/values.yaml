@@ -21,3 +21,5 @@ airflow:
 postgres-ha: # HA postgres
   postgresPassword: "postgres"
   database: "airflow"
+  repmgrUsername: "repmgr"
+  repmgrPassword: "repmgr_password"
