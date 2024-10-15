@@ -2,7 +2,7 @@ airflow:
   dags:
     gitSync:
       enabled: true
-      repo: https://github.com/Courtcirtcuits/airflow.git
+      repo: https://github.com/Courtcircuits/airflow.git
       branch: main
       rev: HEAD
       subPath: "dags"
