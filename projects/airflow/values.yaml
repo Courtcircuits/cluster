@@ -1,4 +1,9 @@
 airflow:
+  dags:
+    gitSync:
+      enabled: true
+    persistence:
+      enabled: false
   executor: "KubernetesExecutor"
   createUserJob:
     useHelmHooks: false
