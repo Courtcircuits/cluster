@@ -1,0 +1,9 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: raw-gists-middleware
+spec:
+  redirectRegex:
+    regex: ^(https?)://raw\.gists\.app/(.+)$
+    replacement: ${1}://api.gists.app/gists/$2
+    permanent: true
