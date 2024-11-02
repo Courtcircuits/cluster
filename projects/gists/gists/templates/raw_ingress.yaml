@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gists-ingress
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    traefik.ingress.kubernetes.io/redirection-entry-point: https
+    traefik.ingress.kubernetes.io/redirect-permanent: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace}}-raw-gists-middleware@kubernetescrd
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+  labels:
+    name: gists-ingress
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: raw.gists.app
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: gists
+                port:
+                  number: {{ .Values.service.externalPort }}
