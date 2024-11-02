@@ -2,7 +2,7 @@ apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: raw-gists-middleware
-  namespace: {{ .Realease.Namespace }}
+  namespace: {{ .Release.Namespace }}
 spec:
   redirectRegex:
     regex: http://raw\.gists\.app/(.+)$
