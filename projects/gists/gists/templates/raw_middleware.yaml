@@ -4,6 +4,6 @@ metadata:
   name: raw-gists-middleware
 spec:
   redirectRegex:
-    regex: ^(https?)://raw\.gists\.app/(.+)$
-    replacement: ${1}://api.gists.app/gists/$2
+    regex: http://raw\.gists\.app/(.+)$
+    replacement: http://api.gists.app/gists/$1
     permanent: true
