@@ -4,7 +4,6 @@ metadata:
   name: raw-gists-middleware
   namespace: {{ .Release.Namespace }}
 spec:
-  redirectRegex:
-    regex: http://raw\.gists\.app/(.+)$
-    replacement: http://api.gists.app/gists/$1
-    permanent: true
+  replacePathRegex:
+    regex: ^/([a-zA-Z0-9]+)$
+    replacement: /gists/$1
