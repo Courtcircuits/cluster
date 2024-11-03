@@ -6,4 +6,4 @@ metadata:
 spec:
   replacePathRegex:
     regex: ^/([a-zA-Z0-9]+)$
-    replacement: /gists/$1\?raw=true
+    replacement: /gists/raw/$1
