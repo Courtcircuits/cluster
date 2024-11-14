@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: gists-ingress
-  namespace: { { .Release.Namespace } }
+  namespace: {{ .Release.Namespace }}
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
     traefik.ingress.kubernetes.io/redirection-entry-point: https
@@ -15,10 +15,10 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - { { .Values.gists.host } }
+        - {{ .Values.gists.host }}
       secretName: "gists-tls-ca-part-en-prod"
   rules:
-    - host: { { .Values.gists.host } }
+    - host: {{ .Values.gists.host }}
       http:
         paths:
           - pathType: Prefix
@@ -27,4 +27,4 @@ spec:
               service:
                 name: gists
                 port:
-                  number: { { .Values.service.externalPort } }
+                  number: {{ .Values.service.externalPort }}
