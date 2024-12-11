@@ -11,13 +11,13 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`argopolytech.{{ .Values.rootDomain }}`)
+      match: Host(`argo.{{ .Values.rootDomain }}`)
       priority: 10
       services:
         - name: {{ .Values.argocdServiceName }}
           port: 80
     - kind: Rule
-      match: Host(`argopolytech.{{ .Values.rootDomain }}`) && Headers(`Content-Type`, `application/grpc`)
+      match: Host(`argo.{{ .Values.rootDomain }}`) && Headers(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - name: {{ .Values.argocdServiceName }}

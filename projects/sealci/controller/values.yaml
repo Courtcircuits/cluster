@@ -1,0 +1,14 @@
+image: "milou666/sealci-controller"
+tag: "latest"
+replicaCount: 1
+service:
+  externalPort: 80
+  internalPort: 8080
+controller:
+  host: "controller.courtcircuits.xyz"
+  ingress:
+    enabled: true
+database:
+  url: "postgres://postgres:postgres@database-sealci-postgresql:5432/sealci?sslmode=disable"
+scheduler:
+  grpcHost: "http://81.64.166.11:5005"

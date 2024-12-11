@@ -1,0 +1,27 @@
+image: "milou666/gists-api"
+tag: "latest"
+replicaCount: 1
+service:
+  externalPort: 80
+  internalPort: 4000
+gists:
+  host: "api.gists.app"
+  ingress:
+    enabled: true
+  secrets:
+    - name: "GITHUB_KEY"
+    - name: "GITHUB_SECRET"
+    - name: "GOOGLE_KEY"
+    - name: "GOOGLE_SECRET"
+    - name: "APP_KEY"
+    - name: "SMTP_HOST"
+    - name: "MAIL_SMTP"
+    - name: "MAIL_PASSWORD"
+    - name: "SMTP_PORT"
+    - name: "PUBLIC_URL"
+postgres:
+  secret: "database-gists-postgresql"
+
+jobs:
+  - name: "migrate"
+    command: "migrate"

@@ -5,19 +5,19 @@ metadata:
   namespace: services
 spec:
   clusterResourceWhitelist:
-    - group: "*"
-      kind: "*"
+  - group: '*'
+    kind: '*'
   description: Project containing all applications used by courtcircuits' cluster
   destinations:
-    - namespace: "*"
-      server: "*"
+  - namespace: '*'
+    server: '*'
   namespaceResourceWhitelist:
-    - group: "*"
-      kind: "*"
+  - group: '*'
+    kind: '*'
   orphanedResources:
     warn: true
   sourceRepos:
-    - "*"
+    - '*'
 ---
 #############
 # AppOfApps #
@@ -30,11 +30,11 @@ metadata:
 spec:
   project: hackthecrous
   source:
-    repoURL: "https://github.com/Courtcircuits/HackTheCrous.charts"
+    repoURL: 'https://github.com/Courtcircuits/HackTheCrous.charts'
     path: applications
     targetRevision: HEAD
   destination:
-    server: "https://kubernetes.default.svc"
+    server: 'https://kubernetes.default.svc'
     namespace: hackthecrous
   syncPolicy:
     automated:
@@ -52,11 +52,11 @@ metadata:
 spec:
   project: hackthecrous
   source:
-    repoURL: "https://github.com/Courtcircuits/polytech-cluster"
+    repoURL: 'https://github.com/Courtcircuits/cluster'
     path: projects/hackthecrous/database
     targetRevision: HEAD
   destination:
-    server: "https://kubernetes.default.svc"
+    server: 'https://kubernetes.default.svc'
     namespace: hackthecrous
   syncPolicy:
     automated:

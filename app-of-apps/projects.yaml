@@ -6,11 +6,11 @@ metadata:
 spec:
   project: applications
   source:
-    repoURL: "https://github.com/Courtcircuits/polytech-cluster"
+    repoURL: 'https://github.com/Courtcircuits/cluster'
     path: projects
     targetRevision: HEAD
   destination:
-    server: "https://kubernetes.default.svc"
+    server: 'https://kubernetes.default.svc'
     namespace: services
   syncPolicy:
     automated:

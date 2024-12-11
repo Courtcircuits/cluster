@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: {{ $fullname := printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" }}
+  name: {{ .Release.Name }}-deployment
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-deployment
+  replicas: {{ default 1 .Values.replicaCount | int }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-deployment
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image }}:{{ .Values.tag }}"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: {{ .Values.service.internalPort | int }}
+        env:
+        - name: DATABASE_URL
+          value: {{ .Values.database.url | quote }}
+        - name: HTTP
+          value: "0.0.0.0:{{ .Values.service.internalPort }}"
+        - name: GRPC
+          value: {{ .Values.scheduler.grpcHost | quote }}
+        livenessProbe:
+          httpGet:
+            path: /docs
+            port: {{ .Values.service.internalPort | int }}
+        readinessProbe:
+          httpGet:
+            path: /docs
+            port: {{ .Values.service.internalPort | int }}

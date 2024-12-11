@@ -1,0 +1,46 @@
+airflow:
+  dags:
+    gitSync:
+      enabled: true
+      repo: https://github.com/Courtcircuits/airflow.git
+      branch: main
+      rev: HEAD
+      subPath: "dags"
+    persistence:
+      enabled: false
+  executor: "KubernetesExecutor"
+  createUserJob:
+    useHelmHooks: false
+    applyCustomEnv: false
+  migrateDatabaseJob:
+    useHelmHooks: false
+    applyCustomEnv: false
+    jobAnnotations:
+      "argocd.argoproj.io/hook": Sync
+  postgresql: # by default postgres shipped by the chart
+    enabled: false
+  data:
+    metadataConnection:
+      user: postgres
+      pass: postgres
+      protocol: postgresql
+      host: airflow-poc-postgres-ha-postgresql.airswagg.svc.cluster.local
+      port: 5432
+      db: "airflow"
+global:
+  postgresql:
+    database: "airflow"
+    username: "postgres"
+    password: "postgres"
+    repmgrUsername: "repmgr"
+    repmgrPassword: "repmgr_password"
+    postgresqlPassword: "postgres"
+    postgresqlDatabase: "airflow"
+  pgpool:
+    adminPassword: "postgres"
+    adminUsername: "admin"
+postgres-ha: # HA postgres
+  postgresql:
+    postgresPassword: "postgres"
+  pgpool:
+    adminPassword: "postgres"

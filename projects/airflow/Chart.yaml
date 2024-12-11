@@ -1,0 +1,14 @@
+apiVersion: v2
+name: airflow
+description: A Helm chart for Kubernetes airflow
+type: application
+version: 0.1.0
+dependencies:
+  - name: airflow
+    alias: airflow
+    version: 1.15.0
+    repository: https://airflow.apache.org/
+  - name: postgresql-ha
+    alias: postgres-ha
+    version: 14.2.33
+    repository: https://charts.bitnami.com/bitnami
