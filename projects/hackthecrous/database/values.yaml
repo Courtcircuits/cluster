@@ -1,8 +1,0 @@
-postgresql:
-  global:
-    postgresql:
-      auth:
-        postgresPassword: "postgres"
-        database: "hackthecrous"
-      service:
-        port: "5432"
