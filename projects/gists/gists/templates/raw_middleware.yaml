@@ -1,9 +1,0 @@
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: raw-gists-middleware
-  namespace: {{ .Release.Namespace }}
-spec:
-  replacePathRegex:
-    regex: ^/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$
-    replacement: /gists/raw/$1
