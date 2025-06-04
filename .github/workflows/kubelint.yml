@@ -7,27 +7,20 @@ on:
       - 'app-of-apps/**'
       - '*.yaml'
       - '*.yml'
+  push:
+    branches:
+      - main
 
 jobs:
   kube-lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Determine affected directory
-        id: determine-directory
-        run: |
-          # Get the list of changed files
-          CHANGED_FILES=$(jq -r '.files[] | .filename' <<< "$GITHUB_EVENT_PULL_REQUEST")
-          # Extract the common directory path
-          DIRECTORY=$(dirname "$CHANGED_FILES" | head -n 1)
-          echo "directory=$DIRECTORY" >> $GITHUB_OUTPUT
-
       - name: Run kube-linter
         uses: docker://docker.io/stackrox/kube-linter:latest
         with:
           config: .kube-linter.yaml
-          directory: ${{ steps.determine-directory.outputs.directory }}
+          directory: "."
           output-file: kube-linter.sarif
 
       - name: Upload results to GitHub
