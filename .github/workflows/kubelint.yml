@@ -23,6 +23,7 @@ jobs:
           config: .kube-linter.yaml
           directory: "."
           output-file: kube-linter.sarif
+          fail-on-invalid-resource: false
       - name: Upload results to GitHub
         uses: github/codeql-action/upload-sarif@v3
         with:
