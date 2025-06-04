@@ -1,5 +1,9 @@
 name: Lint Kubernetes files
+run-name: ${{ github.actor }} is making sure that the manifest are bullet proof 🚀
 on:
+  push:
+    branches:
+      - main
   pull_request:
     paths:
       - 'services/**'
@@ -7,9 +11,6 @@ on:
       - 'app-of-apps/**'
       - '*.yaml'
       - '*.yml'
-  push:
-    branches:
-      - main
 
 jobs:
   kube-lint:
