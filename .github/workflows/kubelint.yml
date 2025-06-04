@@ -18,14 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run kube-linter
-        uses: docker://docker.io/stackrox/kube-linter:latest
+        uses: stackrox/kube-linter-action@v1.0.4
         with:
           config: .kube-linter.yaml
           directory: "."
           output-file: kube-linter.sarif
-
       - name: Upload results to GitHub
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: kube-linter.sarif
           wait-for-processing: true
