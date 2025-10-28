@@ -288,3 +288,25 @@ spec:
     automated:
       prune: true
       selfHeal: true
+---
+##################
+# Hack the Crous #
+##################
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hackthecrous
+  namespace: services
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/Courtcircuits/polytech-cluster"
+    path: projects/hackthecrous
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: services
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

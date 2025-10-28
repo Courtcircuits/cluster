@@ -1,0 +1,65 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: hackthecrous
+  namespace: services
+spec:
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  description: Project containing all applications used by courtcircuits' cluster
+  destinations:
+    - namespace: "*"
+      server: "*"
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  orphanedResources:
+    warn: true
+  sourceRepos:
+    - "*"
+---
+#############
+# AppOfApps #
+#############
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hackthecrous-appofapps
+  namespace: services
+spec:
+  project: hackthecrous
+  source:
+    repoURL: "https://github.com/Courtcircuits/HackTheCrous.charts"
+    path: applications
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: hackthecrous
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+############
+# database #
+############
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hackthecrous-services
+  namespace: services
+spec:
+  project: hackthecrous
+  source:
+    repoURL: "https://github.com/Courtcircuits/polytech-cluster"
+    path: projects/hackthecrous/database
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: hackthecrous
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
