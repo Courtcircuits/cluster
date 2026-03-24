@@ -37,7 +37,7 @@ spec:
         - name: PG_DATABASE
           value: "gists"
         - name: FRONTEND_URL
-          value: "https://gists.app"
+          value: "https://gists.eu"
         - name: ENV
           value: "production"
         {{- $values := .Values -}}

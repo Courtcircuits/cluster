@@ -14,7 +14,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: raw.gists.app
+    - host: raw.gists.eu
       http:
         paths:
           - pathType: Prefix

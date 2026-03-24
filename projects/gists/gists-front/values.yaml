@@ -5,6 +5,6 @@ service:
   externalPort: 80
   internalPort: 3000
 gists:
-  host: "gists.app"
+  host: "gists.eu"
   ingress:
     enabled: true
