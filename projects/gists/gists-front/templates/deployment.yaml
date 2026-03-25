@@ -18,6 +18,9 @@ spec:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image }}:{{ .Values.tag }}"
         imagePullPolicy: Always
+        env:
+          - name: NEXT_PUBLIC_BACKEND_URL
+            value: "https://api.gists.eu"
         ports:
         - containerPort: {{ .Values.service.internalPort | int }}
         livenessProbe:
